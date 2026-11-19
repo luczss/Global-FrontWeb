@@ -11,7 +11,7 @@ const QUICK = [[/Di[áa]rio/, 'Abrir o Diário', 'diary'], [/desafio/i, 'Ver des
 const SUGGEST = ['Quero falar sobre meu dia', 'Estou preocupado com algo', 'Pode sugerir um desafio?', 'Você é psicólogo?', 'Consegui uma coisa boa hoje']
 export default function Conversation(props) {
   const { profile, setProfile, memory, diary, ch, notify } = props
-  const chat = useBimoChat({ personality: profile.personality, memory, challenges: ch.all.map(c => c.title), useExternal: !!profile.prefs.externalAi, saveHistory: !!profile.prefs.saveHistory, brief: profile.prefs.replyLength === 'curta', listenOnly: !!profile.prefs.listenOnly, name: profile.name })
+  const chat = useBimoChat({ personality: profile.personality, memory, challenges: ch.all.map(c => c.title), saveHistory: !!profile.prefs.saveHistory, brief: profile.prefs.replyLength === 'curta', listenOnly: !!profile.prefs.listenOnly, name: profile.name })
   const [text, setText] = useState(''); const [share, setShare] = useState(false); const [pick, setPick] = useState(null); const [ok, setOk] = useState(false); const [hist, setHist] = useState(false); const [viewing, setViewing] = useState(null)
   const end = useRef(null)
   useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth' }) }, [chat.messages, chat.sending])
@@ -23,7 +23,7 @@ export default function Conversation(props) {
     <div className="flex flex-col lg:h-[calc(100dvh-3.5rem)]">
       <Header title="Conversar com o Bimo" subtitle="Uma conversa para refletir. O Bimo não é psicólogo nem faz diagnósticos.">
         <button className="btn-soft" onClick={() => setHist(true)}>Histórico</button><button className="btn-soft" onClick={chat.reset}>Nova conversa</button></Header>
-      <p className="text-xs text-carvao/75 mb-3" data-testid="ai-info">{chat.aiActive ? 'Respostas com IA (Google Gemini) ativas: suas mensagens recentes são enviadas ao servidor do Bimo e ao Google para gerar a resposta. Situações de risco continuam sendo tratadas pelo motor local, e se a IA falhar o motor local assume. Não prometemos confidencialidade absoluta.' : profile.prefs.externalAi ? (chat.aiInfo.state === 'checking' ? 'Verificando a IA… enquanto isso, o motor local responde.' : 'A IA está ligada, mas indisponível agora; o motor local está respondendo.') : 'Motor local por regras, no seu navegador: funciona sem internet e sem chaves, e nenhuma mensagem sai do seu aparelho. Não é uma IA generativa nem um modelo treinado, então tem limites.'}</p>
+      <p className="text-xs text-carvao/75 mb-3" data-testid="ai-info">{chat.aiActive ? 'Respostas com IA (Google Gemini): suas mensagens recentes são enviadas ao servidor do Bimo e ao Google para gerar a resposta. Situações de risco são tratadas pelo motor local e, se a IA falhar, o motor local assume. Não prometemos confidencialidade absoluta.' : 'Motor local por regras, no seu navegador: funciona sem internet e sem chaves, e nenhuma mensagem sai do seu aparelho. Não é uma IA generativa nem um modelo treinado, então tem limites.'}</p>
       <div className="lg:hidden card flex items-center gap-3 mb-3 py-3"><BimoCharacter mood={FACE[chat.state]} size="w-14 shrink-0" accessories={profile.equipped} /><div className="flex-1 min-w-0"><p className="text-sm font-bold text-floresta capitalize">{chat.state}</p>{psel}</div></div>
       <div className="grid lg:grid-cols-[1fr_300px] gap-5 lg:flex-1 lg:min-h-0">
         <div className="card flex flex-col min-h-[60vh] lg:min-h-0 lg:h-full">

@@ -25,9 +25,10 @@ export function StepPrefs({ d, set }) {
     <fieldset className="mb-3"><legend className="text-sm font-bold text-floresta mb-1">Tamanho das respostas</legend><div className="flex gap-2">{[['normal', 'Normais'], ['curta', 'Mais curtas']].map(([v, l]) => <button key={v} type="button" aria-pressed={d.replyLength === v} onClick={() => set({ replyLength: v })} className={d.replyLength === v ? 'btn-primary' : 'btn-soft'}>{l}</button>)}</div></fieldset>
     <label className="flex items-start gap-3"><input type="checkbox" className="accent-floresta w-5 h-5 mt-0.5" checked={d.listenOnly} onChange={e => set({ listenOnly: e.target.checked })} /><span>Prefiro só desabafar, sem receber sugestões ou conselhos<span className="block text-xs text-carvao/75">Dá pra mudar a qualquer momento.</span></span></label></div>)
 }
-export function StepDone({ d }) {
+export function StepDone({ d, ai }) {
   const p = PERSONALITIES.find(x => x.id === d.personality)
   return (<div><H>{d.name ? `Tudo pronto, ${d.name}!` : 'Tudo pronto!'}</H><p className="text-carvao/85 mb-4">Esse é o resumo da sua configuração:</p>
     <dl className="rounded-2xl bg-bruma border border-areia p-4 space-y-1 text-sm"><div className="flex justify-between gap-3"><dt className="font-bold text-floresta">Nome</dt><dd>{d.name || 'não informado'}</dd></div><div className="flex justify-between gap-3"><dt className="font-bold text-floresta">Personalidade</dt><dd>{p.name}</dd></div><div className="flex justify-between gap-3"><dt className="font-bold text-floresta">Respostas</dt><dd>{d.replyLength === 'curta' ? 'mais curtas' : 'normais'}{d.listenOnly ? ', sem conselhos' : ''}</dd></div>{d.goals.length > 0 && <div className="flex justify-between gap-3"><dt className="font-bold text-floresta">Expectativas</dt><dd className="text-right">{d.goals.join(', ')}</dd></div>}</dl>
-    <p className="text-xs text-carvao/75 mt-3">Tudo fica salvo só neste dispositivo. Você pode editar ou refazer isso em Configurações.</p></div>)
+    <p className="text-xs text-carvao/75 mt-3">Tudo fica salvo só neste dispositivo. Você pode editar ou refazer isso em Configurações.</p>
+    {ai === 'ready' && <p className="text-xs text-carvao/75 mt-2" data-testid="onboarding-ai">Respostas com IA: as respostas do Bimo são geradas pelo Google Gemini. Para isso, suas mensagens recentes são enviadas ao servidor do Bimo e ao Google (um aviso fica sempre visível na conversa). Situações de risco ficam sempre no seu aparelho.</p>}</div>)
 }

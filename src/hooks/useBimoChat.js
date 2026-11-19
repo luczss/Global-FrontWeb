@@ -1,5 +1,5 @@
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import useLocalStorage from './useLocalStorage'
 import useFeedback from './useFeedback'
 import { getAiStatus, sendChat } from '../services/ai'
@@ -13,7 +13,7 @@ const GREETINGS = [
   ['Que bom te ver. Como você está chegando aqui hoje?', 'how_are_you']
 ]
 
-const pick = name => {
+const pick = (name) => {
   const greetings = name
     ? [...GREETINGS, [`Oi, ${name}! Como você está se sentindo hoje?`, 'how_are_you']]
     : GREETINGS
@@ -21,7 +21,7 @@ const pick = name => {
   return greetings[Math.floor(Math.random() * greetings.length)]
 }
 
-const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const FALLBACK = {
   quota: 'O limite de uso da IA foi atingido por enquanto; o motor local assumiu a conversa.',
@@ -31,33 +31,41 @@ const FALLBACK = {
 
 const FALLBACK_DEFAULT = 'A IA não respondeu agora; o motor local assumiu a conversa.'
 
-// Sessão de conversa. Padrão: motor local.
-// Com "Respostas com IA" ligadas e disponíveis, o Gemini responde.
-// Qualquer falha faz o motor local assumir a conversa.
+// Sessão de conversa. Se o servidor tem a IA (Gemini) configurada,
+// ela responde automaticamente; sem IA, ou em qualquer falha,
+// o motor local responde.
+
 export default function useBimoChat({
   personality,
   memory,
   challenges,
-  useExternal = false,
   saveHistory = false,
   brief = false,
   listenOnly = false,
   name = ''
 }) {
-  const initialMessage = name
-    ? `Oi, ${name}! Como você está se sentindo hoje?`
-    : 'Olá! Como você está se sentindo hoje?'
+  // Inicializa a conversa sem precisar chamar setState dentro de um efeito.
+  const [initialConversation] = useState(() => {
+    const [content, pending] = pick(name)
 
-  const [ai, setAi] = useState({ state: 'off' })
-  const [messages, setMessages] = useState([
-    {
-      id: 'welcome',
-      role: 'assistant',
-      content: initialMessage,
-      local: true
+    return {
+      messages: [
+        {
+          id: crypto.randomUUID(),
+          role: 'assistant',
+          content,
+          local: true
+        }
+      ],
+      engine: {
+        ...newState(),
+        pending
+      }
     }
-  ])
+  })
 
+  const [ai, setAi] = useState({ state: 'checking' })
+  const [messages, setMessages] = useState(initialConversation.messages)
   const [state, setState] = useState('feliz')
   const [notice, setNotice] = useState('')
   const [sending, setSending] = useState(false)
@@ -67,23 +75,11 @@ export default function useBimoChat({
   const fb = useFeedback()
   const [chats, setChats] = useLocalStorage('bimo:chats', [])
 
-  // Inicializações previsíveis dos refs.
-  const engine = useRef(null)
-  if (engine.current === null) {
-    engine.current = {
-      ...newState(),
-      pending: 'how_are_you'
-    }
-  }
+  const engine = useRef(initialConversation.engine)
+  const sid = useRef(crypto.randomUUID())
+  const breaker = useRef(createBreaker())
 
-  const sessionId = useId()
-  const sid = useRef(sessionId)
-
-  const breaker = useRef(null)
-  if (breaker.current === null) {
-    breaker.current = createBreaker()
-  }
-
+  // Reinicia a conversa quando reset for chamado por uma ação do usuário.
   const reset = useCallback(() => {
     sid.current = crypto.randomUUID()
 
@@ -108,28 +104,24 @@ export default function useBimoChat({
     setState('feliz')
   }, [name])
 
-  // Consulta a IA somente quando o usuário ativa essa opção.
+  // Verifica se a IA está configurada no servidor.
   useEffect(() => {
-    if (!useExternal) return
-
     let alive = true
 
-    breaker.current = createBreaker()
-
     getAiStatus()
-      .then(status => {
+      .then((status) => {
         if (alive) setAi(status)
       })
       .catch(() => {
-        if (alive) setAi({ state: 'off' })
+        if (alive) setAi({ state: 'unavailable' })
       })
 
     return () => {
       alive = false
     }
-  }, [useExternal])
+  }, [])
 
-  // Estado de descanso do Bimo após um período sem atividade.
+  // Controla o estado de inatividade do mascote.
   useEffect(() => {
     if (sending || state === 'dormindo') return
 
@@ -140,15 +132,16 @@ export default function useBimoChat({
     return () => clearTimeout(timer)
   }, [sending, state, messages])
 
-  // Histórico salvo apenas se o usuário ativou essa opção.
+  // Salva o histórico somente quando o usuário ativa essa opção.
+  // Os dados permanecem neste dispositivo.
   useEffect(() => {
     if (!saveHistory || messages.length < 2) return
 
-    setChats(currentChats => [
+    setChats((currentChats) => [
       {
         id: sid.current,
         date:
-          currentChats.find(chat => chat.id === sid.current)?.date ||
+          currentChats.find((chat) => chat.id === sid.current)?.date ||
           new Date().toISOString(),
         messages: messages.map(({ id, role, content, mood }) => ({
           id,
@@ -157,15 +150,15 @@ export default function useBimoChat({
           mood
         }))
       },
-      ...currentChats.filter(chat => chat.id !== sid.current)
+      ...currentChats.filter((chat) => chat.id !== sid.current)
     ].slice(0, 20))
   }, [messages, saveHistory, setChats])
 
-  const mem =
-    memory.enabled && !noMemory
-      ? memory.items.map(item => item.text)
-      : []
+  const mem = memory.enabled && !noMemory
+    ? memory.items.map((item) => item.text)
+    : []
 
+  // Envia uma mensagem e utiliza a IA ou o motor local como alternativa.
   const send = async (text, entry = null) => {
     const user = {
       id: crypto.randomUUID(),
@@ -184,7 +177,7 @@ export default function useBimoChat({
     try {
       const startTime = Date.now()
 
-      const result = await respond({
+      const response = await respond({
         text,
         entry,
         engine: engine.current,
@@ -197,7 +190,6 @@ export default function useBimoChat({
         },
         breaker: breaker.current,
         ai: {
-          enabled: useExternal,
           status: ai.state,
           send: sendChat,
           request: buildChatRequest({
@@ -212,7 +204,7 @@ export default function useBimoChat({
         }
       })
 
-      if (result.source === 'local') {
+      if (response.source === 'local') {
         await wait(
           Math.max(
             0,
@@ -221,26 +213,26 @@ export default function useBimoChat({
         )
       }
 
-      engine.current = result.engine
+      engine.current = response.engine
 
-      setMessages(currentMessages => [
+      setMessages((currentMessages) => [
         ...currentMessages,
         {
           id: crypto.randomUUID(),
           role: 'assistant',
           personality,
-          content: result.text,
-          safety: result.safety,
-          mood: result.mood,
-          intent: result.intent,
-          source: result.source
+          content: response.text,
+          safety: response.safety,
+          mood: response.mood,
+          intent: response.intent,
+          source: response.source
         }
       ])
 
-      setState(result.mood)
+      setState(response.mood)
 
-      if (result.fallback) {
-        setNotice(FALLBACK[result.fallback] || FALLBACK_DEFAULT)
+      if (response.fallback) {
+        setNotice(FALLBACK[response.fallback] || FALLBACK_DEFAULT)
       }
     } catch {
       setError('Algo deu errado ao responder. Tente de novo.')
@@ -250,13 +242,11 @@ export default function useBimoChat({
     }
   }
 
-  const aiInfo = useExternal ? ai : { state: 'off' }
-
   return {
     chats,
     clearChats: () => setChats([]),
-    aiInfo,
-    aiActive: useExternal && ai.state === 'ready',
+    aiInfo: ai,
+    aiActive: ai.state === 'ready',
     messages,
     state,
     notice,

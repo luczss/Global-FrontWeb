@@ -1,6 +1,6 @@
 import useLocalStorage from './useLocalStorage'
 // Perfil do usuário (persistido no localStorage). Separado da página "Personalizar" (acessórios do mascote).
-const INITIAL_PROFILE = { name: '', personality: 'acolhedor', goals: [], owned: [], equipped: [], onboarded: false, prefs: { reminders: true, confirmDelete: true, externalAi: false, saveHistory: false, replyLength: 'normal', listenOnly: false } }
+const INITIAL_PROFILE = { name: '', personality: 'acolhedor', goals: [], owned: [], equipped: [], onboarded: false, prefs: { reminders: true, confirmDelete: true, saveHistory: false, replyLength: 'normal', listenOnly: false } }
 export default function useProfile() {
   const [raw, setProfile] = useLocalStorage('bimo:profile', INITIAL_PROFILE)
   const profile = { ...INITIAL_PROFILE, ...raw, prefs: { ...INITIAL_PROFILE.prefs, ...raw.prefs } }

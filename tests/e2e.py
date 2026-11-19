@@ -13,10 +13,10 @@ def onboard(pg, name='Lucas'):
     err = 'pelo menos 2 letras' in pg.inner_text('body'); pg.get_by_label('Nome ou apelido').fill(name); pg.get_by_role('button', name='Continuar').click()
     pg.locator('button:has-text("Desafiador")').first.click(); pg.get_by_role('button', name='Continuar').click()
     pg.get_by_role('button', name='Só conversar um pouco').click(); pg.get_by_label('Prefiro só desabafar').check(); pg.get_by_role('button', name='Continuar').click()
-    done = name in pg.inner_text('body') and 'Desafiador' in pg.inner_text('body'); pg.get_by_role('button', name='Começar a usar o Bimo').click(); pg.wait_for_selector('main')
-    return err, done
+    done = name in pg.inner_text('body') and 'Desafiador' in pg.inner_text('body'); ai_note = pg.get_by_test_id('onboarding-ai').count(); pg.get_by_role('button', name='Começar a usar o Bimo').click(); pg.wait_for_selector('main')
+    return err, done, ai_note
 def ai_ui(b):
-    """Interface com IA: chamadas a /api/chat interceptadas (sucesso, falha, risco, indisponível)."""
+    """IA ligada automaticamente (sem opção no app): chamadas a /api/chat interceptadas (sucesso, falha, risco, sem chave)."""
     def new(st):
         ctx = b.new_context(viewport={'width': 1280, 'height': 800}); pg = ctx.new_page()
         def h(route, request):
@@ -24,25 +24,27 @@ def ai_ui(b):
             st['posts'].append(json.loads(request.post_data))
             if st['mode'] == 'ok': return route.fulfill(status=200, content_type='application/json', body=json.dumps({'reply': 'Resposta simulada do Gemini.', 'safety': False, 'provider': 'gemini'}))
             return route.fulfill(status=502, content_type='application/json', body=json.dumps({'error': 'unavailable', 'message': 'x'}))
-        ctx.route('**/api/chat', h); onboard(pg); return ctx, pg
+        ctx.route('**/api/chat', h); note = onboard(pg)[2]; return ctx, pg, note
     def say(pg, t): pg.get_by_label('Mensagem').fill(t); pg.get_by_role('button', name='Enviar').click(); pg.wait_for_timeout(1700)
-    st = {'configured': True, 'mode': 'ok', 'posts': []}; ctx, pg = new(st)
-    nav(pg, 'Conversa'); say(pg, 'Meu dia foi ruim'); check('IA: desligada por padrão, nenhuma chamada ao /api/chat', len(st['posts']) == 0)
-    nav(pg, 'Configurações'); pg.wait_for_timeout(500); check('IA: configurações mostram o provedor Google Gemini e a integração configurada', 'Google Gemini' in pg.inner_text('body') and 'configurada' in pg.get_by_test_id('ai-status').inner_text())
-    pg.get_by_label('Respostas com IA (Google Gemini)').check(); nav(pg, 'Conversa'); pg.wait_for_timeout(500)
-    check('IA: a conversa avisa que usa serviço externo', 'Google Gemini' in pg.get_by_test_id('ai-info').inner_text() and 'enviadas' in pg.get_by_test_id('ai-info').inner_text())
+    def chat(pg): nav(pg, 'Conversa'); pg.wait_for_timeout(700)
+    st = {'configured': True, 'mode': 'ok', 'posts': []}; ctx, pg, note = new(st)
+    check('IA: o onboarding avisa que as respostas usam o Google Gemini', note == 1)
+    chat(pg); info = pg.get_by_test_id('ai-info').inner_text()
+    check('IA: a conversa avisa que usa o Google Gemini, sem nenhuma opção a ligar', 'Google Gemini' in info and 'enviadas' in info)
     say(pg, 'Tive um dia difícil na faculdade'); log = pg.locator('[role=log]').inner_text(); p = st['posts'][-1] if st['posts'] else {}
-    check('IA: resposta do Gemini aparece com a etiqueta da fonte', 'Resposta simulada do Gemini.' in log and 'IA · Google Gemini' in log)
+    check('IA: a primeira mensagem já vai ao Gemini e a resposta aparece com a etiqueta da fonte', len(st['posts']) == 1 and 'Resposta simulada do Gemini.' in log and 'IA · Google Gemini' in log)
     check('IA: a requisição não leva diário nem memória, tem histórico limitado e a personalidade do perfil', 'entry' not in p and p.get('memory') == [] and len(p.get('messages', [])) <= 8 and p.get('personality') == 'desafiador' and 'GEMINI' not in json.dumps(p))
-    st['mode'] = 'erro'; n = len(st['posts']); say(pg, 'Tive problemas no trabalho'); log = pg.locator('[role=log]').inner_text()
-    check('IA: erro da API cai no motor local, com aviso e sem quebrar o chat', len(st['posts']) == n + 1 and 'motor local' in pg.get_by_test_id('ai-notice').inner_text() and log.count('Resposta simulada do Gemini.') == 1 and 'Tive problemas no trabalho' in log and pg.get_by_label('Mensagem').is_enabled())
+    nav(pg, 'Configurações'); pg.wait_for_timeout(400); body = pg.inner_text('body')
+    check('IA: Configurações não têm mais a opção nem o status da IA', pg.get_by_label('Respostas com IA (Google Gemini)').count() == 0 and 'Integração:' not in body and 'Desativada por padrão' not in body)
+    check('IA: painel de privacidade informa o envio ao Google Gemini e que não há chave para desligar', 'Google Gemini' in body and 'não existe chave para desligar' in body)
+    st['mode'] = 'erro'; chat(pg); n = len(st['posts']); say(pg, 'Tive problemas no trabalho'); log = pg.locator('[role=log]').inner_text()
+    check('IA: erro da API cai no motor local, com aviso e sem quebrar o chat', len(st['posts']) == n + 1 and 'motor local' in pg.get_by_test_id('ai-notice').inner_text() and 'Tive problemas no trabalho' in log and pg.get_by_label('Mensagem').is_enabled())
     say(pg, 'Foi com o chefe'); check('IA: após a falha não há novas chamadas em loop (pausa)', len(st['posts']) == n + 1)
-    pg.reload(); pg.wait_for_selector('main'); st['mode'] = 'ok'; nav(pg, 'Conversa'); pg.wait_for_timeout(500); n = len(st['posts']); say(pg, 'Eu fui atropelado hoje')
+    pg.reload(); pg.wait_for_selector('main'); st['mode'] = 'ok'; chat(pg); n = len(st['posts']); say(pg, 'Eu fui atropelado hoje')
     check('IA: situação de risco é tratada pelo motor local (SAMU 192), sem enviar à IA', len(st['posts']) == n and '192' in pg.locator('[role=log]').inner_text()); ctx.close()
-    st2 = {'configured': False, 'mode': 'ok', 'posts': []}; ctx, pg = new(st2); nav(pg, 'Configurações'); pg.wait_for_timeout(500)
-    check('IA: sem chave no servidor, configurações mostram indisponível', 'indisponível' in pg.get_by_test_id('ai-status').inner_text())
-    pg.get_by_label('Respostas com IA (Google Gemini)').check(); nav(pg, 'Conversa'); pg.wait_for_timeout(500); say(pg, 'Meu dia foi ruim')
-    check('IA: sem chave, o chat responde com o motor local', len(st2['posts']) == 0 and 'indisponível' in pg.get_by_test_id('ai-info').inner_text() and pg.locator('[role=log]').inner_text().count('Meu dia foi ruim') == 1 and len(pg.locator('[role=log]').inner_text()) > 60); ctx.close()
+    st2 = {'configured': False, 'mode': 'ok', 'posts': []}; ctx, pg, note = new(st2); check('IA: sem chave no servidor, o onboarding não menciona IA', note == 0)
+    chat(pg); say(pg, 'Meu dia foi ruim'); log = pg.locator('[role=log]').inner_text()
+    check('IA: sem chave, o chat responde só com o motor local, sem aviso de falha', len(st2['posts']) == 0 and 'Motor local' in pg.get_by_test_id('ai-info').inner_text() and pg.get_by_test_id('ai-notice').count() == 0 and len(log) > 60); ctx.close()
 def overflow(pg): return pg.evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth')
 with sync_playwright() as p:
     b = p.chromium.launch()
@@ -50,7 +52,7 @@ with sync_playwright() as p:
         ctx = b.new_context(viewport=vp); pg = ctx.new_page()
         pg.on('console', lambda m: errors.append((name, m.text)) if m.type == 'error' and 'Failed to load resource' not in m.text and 'jsonplaceholder' not in m.text.lower() else None)
         pg.on('pageerror', lambda e: errors.append((name, 'PAGEERROR ' + str(e))))
-        err, done = onboard(pg)
+        err, done, _ = onboard(pg)
         check(f'{name}: validação do nome no onboarding', err); check(f'{name}: etapa final resume a configuração', done)
         check(f'{name}: dashboard usa o nome do perfil', 'Lucas' in pg.inner_text('h1') and 'amigo' not in pg.inner_text('h1'))
         pg.reload(); pg.wait_for_selector('main'); check(f'{name}: perfil persiste após atualizar (sem novo onboarding)', 'Lucas' in pg.inner_text('h1') and pg.locator('section[aria-label="Configuração inicial"]').count() == 0)
