@@ -1,24 +1,24 @@
-&#x20;\<p align="center">   \<img src="./src/assets/characters/bimoimg.png" alt="Bimo — suporte emocional, sempre por perto" width="100%" /> \</p>
+<p align="center">   <img src="docs/bimo-banner.png" alt="Bimo — suporte emocional, sempre por perto" width="100%" /> </p>
 
-\<h1 align="center">Bimo — Expressar, Refletir e Conectar\</h1>
+<h1 align="center">Bimo — Expressar, Refletir e Conectar</h1>
 
-\<p align="center">
-&#x20; \<strong>Um espaço digital para expressão emocional, autoconhecimento e conexão.\</strong>
-&#x20; \<br />
-&#x20; \<em>Suporte emocional, sempre por perto.\</em>
-\</p>
+<p align="center">
+  <strong>Um espaço digital para expressão emocional, autoconhecimento e conexão.</strong>
+  <br />
+  <em>Suporte emocional, sempre por perto.</em>
+</p>
 
-\<p align="center">
+<p align="center">
 &#x20; \<img src="[https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white](https://img.shields.io/badge/React-18-61DAFB?logo=react\&logoColor=white)" />
 &#x20; \<img src="[https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white](https://img.shields.io/badge/Vite-5-646CFF?logo=vite\&logoColor=white)" />
 &#x20; \<img src="[https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss\&logoColor=white)" />
 &#x20; \<img src="[https://img.shields.io/badge/Google_Gemini-API-8E75B2?logo=googlegemini&logoColor=white](https://img.shields.io/badge/Google_Gemini-API-8E75B2?logo=googlegemini\&logoColor=white)" />
 &#x20; \<img src="[https://img.shields.io/badge/Status-Em_desenvolvimento-2E5247](https://img.shields.io/badge/Status-Em_desenvolvimento-2E5247)" />
-\</p>
+</p>
 
-\<p align="center">
+<p align="center">
 &#x20; \<a href="[https://teste-gs-mu.vercel.app/](https://teste-gs-mu.vercel.app/)">Acessar projeto publicado\</a>
-\</p>
+</p>
 
 ---
 
