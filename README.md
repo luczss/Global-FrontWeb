@@ -10,6 +10,8 @@
   <em>Suporte emocional, sempre por perto.</em>
 </p>
 
+---
+
 <p align="center">
   <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React 19" />
   <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite 8" />
@@ -38,15 +40,36 @@ Sua proposta é tornar a expressão emocional mais acessível por meio de uma in
 
 > **Importante:** O Bimo é uma ferramenta de apoio à expressão emocional. Não realiza diagnósticos, não substitui acompanhamento psicológico ou médico e não deve ser utilizado como serviço de emergência.
 
+---
+## 👥 Equipe de desenvolvimento
+
+<p align="center">
+  <strong>Projeto acadêmico desenvolvido na FIAP</strong>
+  <br />
+  Engenharia de Software
+</p>
+
+| Integrante | RM |
+|:---|---:|
+| Eduardo Guzeli Nogueira | 571143 |
+| Diego Caio de Ulhôa | 572190 |
+| Lucas dos Santos Oliveira | 571718 |
+| Octávio Mello Covre de Souza | 571811 |
+| Gabriel Torres Zambo | 569883 |
+
+---
+
 ## ✨ Funcionalidades
 
 ### 📊 Dashboard
+
 - Visão geral das atividades do usuário.
 - Acesso rápido às principais funcionalidades.
 - Resumo de registros e desafios.
 - Acompanhamento do progresso.
 
 ### 💬 Modo Conversa
+
 - Conversas interativas com o mascote Bimo.
 - Três personalidades: **Acolhedor, Motivador e Desafiador**.
 - Reconhecimento de intenções e continuidade de contexto.
@@ -56,12 +79,14 @@ Sua proposta é tornar a expressão emocional mais acessível por meio de uma in
 - Funcionamento com motor local e integração opcional com Google Gemini.
 
 ### 📔 Diário pessoal
+
 - Criação, edição e exclusão de registros.
 - Busca por título e conteúdo.
 - Reconhecimento de voz pelo navegador.
 - Armazenamento local dos registros.
 
 ### 🎯 Desafios
+
 - Desafios graduais e opcionais.
 - Criação e exclusão de desafios personalizados.
 - Registro de conclusão.
@@ -70,12 +95,14 @@ Sua proposta é tornar a expressão emocional mais acessível por meio de uma in
 - Integração com API externa para demonstração de operações CRUD.
 
 ### 🎨 Personalização
+
 - Diferentes personalidades para o Bimo.
 - Loja de acessórios.
 - Sistema de moedas virtuais.
 - Personalização do mascote.
 
 ### ⚙️ Memória e configurações
+
 - Memória opcional e editável.
 - Preferências de conversação.
 - Opção de respostas mais curtas.
@@ -100,6 +127,8 @@ Sua proposta é tornar a expressão emocional mais acessível por meio de uma in
 | LocalStorage | Persistência de dados no navegador |
 | Vercel | Hospedagem da aplicação e funções backend |
 
+---
+
 ## 🧠 Inteligência artificial — Google Gemini
 
 O Bimo possui integração com a API do Google Gemini por meio de uma função backend hospedada na Vercel.
@@ -109,17 +138,18 @@ A aplicação também possui um motor local de conversação, permitindo que fun
 ### Como funciona a alternância entre os motores?
 
 **Motor local**
+
 - Funciona diretamente no navegador.
 - Utiliza regras, intenções, contexto e modelos de resposta.
 - Não depende de uma chamada à API do Gemini.
 
 **Google Gemini**
+
 - Utiliza inteligência artificial generativa.
 - Produz respostas contextualizadas.
 - Depende da configuração da variável de ambiente `GEMINI_API_KEY` no servidor.
 
 Quando a integração externa está indisponível ou apresenta falhas, a aplicação conta com mecanismos de fallback para o motor local.
-
 
 ---
 
@@ -244,7 +274,7 @@ O Bimo utiliza a API pública **JSONPlaceholder** para demonstrar operações CR
 | Update | PATCH | Atualizar conclusão |
 | Delete | DELETE | Excluir desafio |
 
-Endpoint:
+**Endpoint:**
 
 ```text
 https://jsonplaceholder.typicode.com/todos
@@ -370,8 +400,6 @@ O projeto está publicado na Vercel.
   </a>
 </p>
 
-
-
 A integração com o Gemini depende da variável `GEMINI_API_KEY` configurada no ambiente da Vercel.
 
 Após alterações no código ou nas variáveis de ambiente, é necessário realizar um novo deploy para aplicar as mudanças.
@@ -380,9 +408,9 @@ Após alterações no código ou nas variáveis de ambiente, é necessário real
 
 ## 🤖 Documentação de Inteligência Artificial
 
-O arquivo `AI.md` é destinado ao registro transparente da utilização de ferramentas de inteligência artificial durante o desenvolvimento.
+O arquivo [`AI.md`](./AI.md) é destinado ao registro transparente da utilização de ferramentas de inteligência artificial durante o desenvolvimento.
 
-A documentação deve apresentar:
+A documentação apresenta:
 
 - Ferramentas de IA utilizadas.
 - Finalidade de cada ferramenta.
@@ -404,14 +432,24 @@ O histórico de commits registra a evolução do projeto, incluindo funcionalida
 
 **Requisito acadêmico:** manter pelo menos 15 commits significativos, conforme solicitado no trabalho.
 
-[Consultar histórico de commits no GitHub](https://github.com/luczss/Global-FrontWeb/commits/main/)
+[📂 Consultar histórico de commits no GitHub](https://github.com/luczss/Global-FrontWeb/commits/main/)
+
+---
+
+## 🎯 Objetivo do projeto
+
+Mais do que desenvolver uma aplicação web, o Bimo busca explorar como a tecnologia pode contribuir para tornar a expressão emocional mais acessível.
+
+A proposta reúne desenvolvimento frontend, integração com inteligência artificial, persistência de dados, experiência do usuário e organização de software em uma única solução.
+
+O projeto demonstra a aplicação prática dos conhecimentos de desenvolvimento web, arquitetura de aplicações e integração de serviços externos.
 
 ---
 
 <p align="center">
   <strong>Bimo — Expressar. Refletir. Conectar.</strong>
   <br />
-  Desenvolvido como projeto acadêmico de Engenharia de Software.
+  Desenvolvido como projeto acadêmico de Engenharia de Software — FIAP.
   <br /><br />
   <em>Tecnologia que aproxima. Um espaço para se expressar.</em>
 </p>
