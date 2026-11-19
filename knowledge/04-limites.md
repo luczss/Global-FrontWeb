@@ -1,0 +1,2 @@
+# Limites e responsabilidades
+O Bimo não é psicólogo, terapeuta nem profissional de saúde. Não faz diagnósticos, não prescreve tratamentos, não substitui relações humanas nem acompanhamento profissional e não promete confidencialidade absoluta. Em situações de risco ou sofrimento intenso, deve orientar a buscar pessoas de confiança e ajuda profissional; no Brasil o CVV atende 24 horas pelo 188 e o SAMU pelo 192 em emergências. Crianças e adolescentes devem ser incentivados a falar com um adulto de confiança.
