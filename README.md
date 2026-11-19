@@ -1,4 +1,6 @@
-<p align="center">   <img src="/src/assets/characters/bimoimg.png" alt="Bimo — suporte emocional, sempre por perto" width="100%" /> </p>
+ <p align="center">
+  <img src="./src/assets/characters/bimoimg.png" alt="Bimo — suporte emocional, sempre por perto" width="100%" />
+</p>
 
 <h1 align="center">Bimo — Expressar, Refletir e Conectar</h1>
 
@@ -8,196 +10,126 @@
   <em>Suporte emocional, sempre por perto.</em>
 </p>
 
-
 <p align="center">
-  <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white" />
-  <img src="https://img.shields.io/badge/Google_Gemini-API-8E75B2?logo=googlegemini&logoColor=white" />
-  <img src="https://img.shields.io/badge/Status-Em_desenvolvimento-2E5247" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React 19" />
+  <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite 8" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Google_Gemini-API-8E75B2?logo=googlegemini&logoColor=white" alt="Google Gemini API" />
+  <img src="https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel" alt="Vercel" />
 </p>
 
-<div align="center">
-    
-**[🌐 Acessar Projeto](https://global-front-web-psi.vercel.app/)**
-</div>
+<p align="center">
+  <a href="https://global-front-web-psi.vercel.app/"><strong>🌐 Acessar o Bimo</strong></a>
+  &nbsp; • &nbsp;
+  <a href="https://github.com/luczss/Global-FrontWeb.git"><strong>💻 Repositório</strong></a>
+</p>
 
 ---
 
-## Equipe
-
-O projeto foi desenvolvido por:
-
-| Integrante                   |     RM |
-| ---------------------------- | -----: |
-| Eduardo Guzeli Nogueira      | 571143 |
-| Diego Caio de Ulhôa          | 572190 |
-| Lucas dos Santos Oliveira    | 571718 |
-| Octávio Mello Covre de Souza | 571811 |
-| Gabriel Torres Zambo         | 569883 |
-
----
-
-## Sobre o projeto
+## 📌 Sobre o projeto
 
 O **Bimo** é uma plataforma web desenvolvida para incentivar a expressão emocional, a reflexão pessoal e a conexão entre pessoas.
 
 A aplicação utiliza um mascote interativo como ponto de aproximação, oferecendo um ambiente digital no qual o usuário pode conversar, registrar pensamentos, realizar pequenos desafios e acompanhar seu próprio progresso.
 
-O projeto combina uma experiência de conversação com funcionalidades de organização pessoal, personalização e inteligência artificial opcional.
+O projeto combina uma experiência de conversação com funcionalidades de organização pessoal, personalização e integração opcional com inteligência artificial.
 
 Sua proposta é tornar a expressão emocional mais acessível por meio de uma interface intuitiva, acolhedora e responsiva.
 
-> O Bimo é uma ferramenta de apoio à expressão emocional. Não realiza diagnósticos, não substitui acompanhamento psicológico ou médico e não deve ser utilizado como serviço de emergência.
+> **Importante:** O Bimo é uma ferramenta de apoio à expressão emocional. Não realiza diagnósticos, não substitui acompanhamento psicológico ou médico e não deve ser utilizado como serviço de emergência.
 
-## Funcionalidades
+## ✨ Funcionalidades
 
-### Dashboard
-
-- Visão geral das atividades.
-- Acesso rápido às funcionalidades.
+### 📊 Dashboard
+- Visão geral das atividades do usuário.
+- Acesso rápido às principais funcionalidades.
 - Resumo de registros e desafios.
 - Acompanhamento do progresso.
 
-### Modo Conversa
-
-- Conversas com o mascote Bimo.
-- Três personalidades: Acolhedor, Motivador e Desafiador.
+### 💬 Modo Conversa
+- Conversas interativas com o mascote Bimo.
+- Três personalidades: **Acolhedor, Motivador e Desafiador**.
 - Reconhecimento de intenções e continuidade de contexto.
 - Respostas adaptadas às preferências do usuário.
 - Histórico de conversas opcional.
 - Avaliação das respostas.
-- Alternância entre motor local e Google Gemini.
+- Funcionamento com motor local e integração opcional com Google Gemini.
 
-### Diário pessoal
-
-- Criação de registros.
-- Edição e exclusão de registros.
+### 📔 Diário pessoal
+- Criação, edição e exclusão de registros.
 - Busca por título e conteúdo.
 - Reconhecimento de voz pelo navegador.
-- Persistência local dos registros.
+- Armazenamento local dos registros.
 
-### Desafios
-
+### 🎯 Desafios
 - Desafios graduais e opcionais.
 - Criação e exclusão de desafios personalizados.
 - Registro de conclusão.
 - Sistema de moedas virtuais.
 - Acompanhamento de progresso e dias consecutivos.
-- Integração com API externa.
+- Integração com API externa para demonstração de operações CRUD.
 
-### Personalização
-
-- Personalidades diferentes para o Bimo.
+### 🎨 Personalização
+- Diferentes personalidades para o Bimo.
 - Loja de acessórios.
 - Sistema de moedas virtuais.
 - Personalização do mascote.
 
-### Memória e configurações
-
+### ⚙️ Memória e configurações
 - Memória opcional e editável.
-- Controle de privacidade.
 - Preferências de conversação.
 - Opção de respostas mais curtas.
 - Modo de conversa sem conselhos.
-- Controle manual da inteligência artificial.
+- Configurações de privacidade e experiência.
 
 ---
 
-## Tecnologias utilizadas
+## 🧰 Tecnologias utilizadas
 
-| Tecnologia        | Aplicação                           |
-| ----------------- | ----------------------------------- |
-| React 18          | Construção da interface             |
-| Vite              | Ambiente de desenvolvimento e build |
-| JavaScript        | Lógica da aplicação                 |
-| Tailwind CSS 3    | Estilização e responsividade        |
-| React Hooks       | Gerenciamento de estados e efeitos  |
-| Custom Hooks      | Organização da lógica reutilizável  |
-| Google Gemini API | Geração opcional de respostas       |
-| `@google/genai`   | SDK oficial do Google Gemini        |
-| JSONPlaceholder   | API externa para operações CRUD     |
-| LocalStorage      | Persistência de dados no navegador  |
-| Vercel            | Hospedagem e execução do backend    |
+| Tecnologia | Aplicação |
+|---|---|
+| React 19 | Construção da interface |
+| Vite 8 | Desenvolvimento e build |
+| JavaScript | Lógica da aplicação |
+| Tailwind CSS | Estilização e responsividade |
+| React Hooks | Gerenciamento de estados e efeitos |
+| Custom Hooks | Organização da lógica reutilizável |
+| Google Gemini API | Geração opcional de respostas |
+| `@google/genai` | Integração com o Google Gemini |
+| JSONPlaceholder | API externa para operações CRUD |
+| LocalStorage | Persistência de dados no navegador |
+| Vercel | Hospedagem da aplicação e funções backend |
 
-## Inteligência artificial — Google Gemini
+## 🧠 Inteligência artificial — Google Gemini
 
 O Bimo possui integração com a API do Google Gemini por meio de uma função backend hospedada na Vercel.
 
-**IMPORTANTE: A inteligência artificial vem DESATIVADA por padrão. Para utilizar as respostas do Gemini, é necessário ativar manualmente o recurso.**
+A aplicação também possui um motor local de conversação, permitindo que funcionalidades de conversa continuem disponíveis sem depender exclusivamente de um serviço externo.
 
-### Como ativar o modo IA
+### Como funciona a alternância entre os motores?
 
-1. Acesse o Bimo.
-2. Entre na página **Configurações**.
-3. Localize a opção **Respostas com IA (Google Gemini)**.
-4. Ative a opção.
-5. Acesse o Modo Conversa e envie uma mensagem.
-6. Verifique a identificação **IA · Google Gemini** nas respostas.
+**Motor local**
+- Funciona diretamente no navegador.
+- Utiliza regras, intenções, contexto e modelos de resposta.
+- Não depende de uma chamada à API do Gemini.
 
-\<details>
-\<summary>\<strong>Como funciona a alternância entre os motores?\</strong>\</summary>
+**Google Gemini**
+- Utiliza inteligência artificial generativa.
+- Produz respostas contextualizadas.
+- Depende da configuração da variável de ambiente `GEMINI_API_KEY` no servidor.
 
-O Bimo possui dois mecanismos de resposta:
+Quando a integração externa está indisponível ou apresenta falhas, a aplicação conta com mecanismos de fallback para o motor local.
 
-- **Motor local:** funciona diretamente no navegador, utilizando regras, intenções, contexto e modelos de resposta. Não depende de uma API paga.
-- **Google Gemini:** utiliza inteligência artificial generativa para produzir respostas contextualizadas, quando ativada e disponível.
-
-Se a IA estiver desativada, indisponível ou apresentar falhas, o sistema utiliza automaticamente o motor local.
-
-Situações prioritárias de segurança continuam sendo tratadas pelo mecanismo local.
-
-\</details>
-
-### Configuração da API
-
-A chave do Google Gemini deve ser configurada exclusivamente no servidor.
-
-Variável de ambiente:
-
-```env
-GEMINI_API_KEY=sua_chave_aqui
-```
-
-Na Vercel:
-
-1. Acesse o projeto.
-2. Entre em **Settings**.
-3. Abra **Environment Variables**.
-4. Adicione `GEMINI_API_KEY`.
-5. Configure para Production e Preview.
-6. Salve e realize um novo deploy.
-
-A chave nunca deve ser adicionada ao código do frontend ou enviada ao GitHub.
-
-Modelo padrão configurado:
-
-```text
-gemini-3.1-flash-lite
-```
-
-Endpoint utilizado:
-
-```text
-/api/chat
-```
-
-Para verificar a configuração da integração, acesse:
-
-```text
-https://teste-gs-mu.vercel.app/api/chat
-```
-
-O endpoint GET retorna informações de configuração, como provedor e modelo, sem expor a chave.
 
 ---
 
-## Arquitetura do projeto
+## 🏗️ Arquitetura do projeto
 
-A aplicação utiliza uma organização modular, separando interface, páginas, lógica de negócio, serviços e dados.
+A aplicação utiliza uma estrutura modular para separar interface, páginas, lógica de negócio, serviços, dados e funções backend.
 
 ```text
-bimo/
+Global-FrontWeb/
+│
 ├── api/
 │   ├── chat.js
 │   └── _lib/
@@ -248,23 +180,41 @@ bimo/
 └── vercel.json
 ```
 
-## Requisitos técnicos do trabalho
+### Organização da arquitetura
 
-O desenvolvimento contempla os principais requisitos técnicos de Front-end Design e Web Development.
+| Diretório | Responsabilidade |
+|---|---|
+| `api/` | Funções backend e integração com serviços externos |
+| `api/_lib/` | Configurações, segurança e suporte à integração de IA |
+| `knowledge/` | Conteúdos de apoio ao mecanismo de conversação |
+| `src/components/` | Componentes reutilizáveis da interface |
+| `src/hooks/` | Hooks personalizados e gerenciamento de comportamentos |
+| `src/pages/` | Páginas e telas da aplicação |
+| `src/services/` | Serviços e regras de comunicação |
+| `src/data/` | Dados utilizados pela aplicação |
+| `src/utils/` | Funções auxiliares |
+| `tests/` | Testes automatizados |
+| `docs/` | Documentação complementar |
 
-| Requisito                | Implementação no Bimo                                         |
-| ------------------------ | ------------------------------------------------------------- |
-| React com Vite           | Aplicação construída com React 18 e Vite                      |
-| Tailwind CSS             | Estilização da interface                                      |
-| Mínimo de 8 componentes  | Componentes reutilizáveis distribuídos pela aplicação         |
-| useState                 | Gerenciamento de estados                                      |
-| useEffect                | Efeitos e sincronização de dados                              |
-| Mínimo de 2 Custom Hooks | O projeto possui 8 hooks personalizados                       |
-| Organização de código    | Separação entre componentes, páginas, hooks, serviços e dados |
-| API externa              | Integração com JSONPlaceholder                                |
-| CRUD                     | Operações de criação, consulta, atualização e exclusão        |
-| Documentação             | README.md e AI.md                                             |
-| Versionamento            | Histórico de commits no Git                                   |
+---
+
+## ⚙️ Requisitos técnicos do projeto
+
+O desenvolvimento contempla os requisitos técnicos relacionados à construção de uma aplicação React, organização de componentes, gerenciamento de estado, integração com API e versionamento.
+
+| Requisito | Implementação |
+|---|---|
+| React com Vite | Aplicação desenvolvida com React e Vite |
+| Tailwind CSS | Estilização e responsividade |
+| Mínimo de 8 componentes | Mais de 8 componentes reutilizáveis |
+| `useState` | Gerenciamento de estados |
+| `useEffect` | Efeitos e sincronização de dados |
+| Mínimo de 2 Custom Hooks | 8 hooks personalizados |
+| Organização de código | Separação entre componentes, páginas, hooks e serviços |
+| API externa | Integração com JSONPlaceholder |
+| CRUD | Criação, consulta, atualização e exclusão |
+| Documentação | README.md e documentação de IA |
+| Versionamento | Histórico de commits no Git |
 
 ### Custom Hooks
 
@@ -279,20 +229,20 @@ O projeto possui os seguintes hooks personalizados:
 - `useProfile`
 - `useSpeechInput`
 
-Esses hooks permitem separar a lógica de negócio dos componentes visuais, facilitando a manutenção e reutilização do código.
+Esses hooks permitem organizar comportamentos e lógica reutilizável, reduzindo a concentração de responsabilidades nos componentes visuais e facilitando a manutenção do código.
 
 ---
 
-## Integração com API externa — CRUD
+## 🔌 Integração com API externa — CRUD
 
-O Bimo utiliza a API pública JSONPlaceholder para demonstrar operações CRUD relacionadas aos desafios.
+O Bimo utiliza a API pública **JSONPlaceholder** para demonstrar operações CRUD relacionadas aos desafios.
 
-| Operação | Método HTTP | Funcionalidade      |
-| -------- | ----------- | ------------------- |
-| Create   | POST        | Criar desafio       |
-| Read     | GET         | Consultar desafios  |
-| Update   | PATCH       | Atualizar conclusão |
-| Delete   | DELETE      | Excluir desafio     |
+| Operação | Método HTTP | Funcionalidade |
+|---|---|---|
+| Create | POST | Criar desafio |
+| Read | GET | Consultar desafios |
+| Update | PATCH | Atualizar conclusão |
+| Delete | DELETE | Excluir desafio |
 
 Endpoint:
 
@@ -300,15 +250,17 @@ Endpoint:
 https://jsonplaceholder.typicode.com/todos
 ```
 
-**Observação:** o JSONPlaceholder é uma API de demonstração. As operações simulam a comunicação com um backend, mas não persistem alterações permanentemente no servidor.
+### Como funciona a persistência?
 
-A persistência real dos desafios acontece localmente, utilizando LocalStorage. Se a API estiver indisponível, a aplicação continua funcionando com os dados locais.
+O JSONPlaceholder é uma API de demonstração. As operações simulam a comunicação com um backend, mas não persistem alterações permanentemente no servidor.
+
+A aplicação utiliza o LocalStorage para manter os dados locais do usuário no navegador. Dessa forma, os dados armazenados localmente podem continuar disponíveis mesmo quando a API externa não está acessível.
 
 ---
 
-## Persistência e privacidade
+## 🔐 Persistência e privacidade
 
-O Bimo utiliza o LocalStorage para armazenar informações no próprio navegador.
+O Bimo utiliza o **LocalStorage** para armazenar informações no próprio navegador.
 
 Entre os dados armazenados estão:
 
@@ -320,20 +272,18 @@ Entre os dados armazenados estão:
 - Avaliações das respostas.
 - Histórico de conversas, quando ativado.
 
-Os dados locais não possuem criptografia. A ativação da IA externa altera o fluxo de dados.
+### Cuidados com os dados
 
-Quando o Gemini está ativado:
+- Os dados armazenados localmente não possuem criptografia automática.
+- A integração com serviços externos altera o fluxo de dados.
+- Quando o Gemini é utilizado, mensagens necessárias para a geração da resposta podem ser encaminhadas ao backend e ao provedor externo.
+- Informações opcionais, como memória e registros do diário, devem ser compartilhadas apenas conforme os recursos e ações disponíveis na aplicação.
 
-- As últimas mensagens da conversa podem ser enviadas ao servidor e ao Google Gemini.
-- A memória só é enviada quando a funcionalidade está ativada.
-- Um registro do diário só é enviado quando o usuário escolhe compartilhá-lo.
-- O diário completo e o histórico completo não são enviados.
-
-O usuário deve estar ciente de que a integração com serviços externos não representa garantia de confidencialidade absoluta.
+O usuário deve estar ciente de que o uso de serviços externos não representa garantia de confidencialidade absoluta.
 
 ---
 
-## Instalação e execução local
+## 🚀 Instalação e execução local
 
 ### Pré-requisitos
 
@@ -344,13 +294,13 @@ O usuário deve estar ciente de que a integração com serviços externos não r
 ### 1. Clone o repositório
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/luczss/Global-FrontWeb.git
 ```
 
 ### 2. Entre na pasta do projeto
 
 ```bash
-cd bimo
+cd Global-FrontWeb
 ```
 
 ### 3. Instale as dependências
@@ -365,7 +315,7 @@ npm install
 npm run dev
 ```
 
-Acesse o endereço informado pelo Vite no terminal, normalmente:
+Acesse o endereço informado pelo Vite no terminal. Normalmente:
 
 ```text
 http://localhost:5173
@@ -377,85 +327,91 @@ http://localhost:5173
 npm run build
 ```
 
-### 6. Executar os testes automatizados
+### 6. Visualizar a versão de produção localmente
 
 ```bash
-npm test
+npm run preview
 ```
 
 ---
 
-## Testes e validação
+## 🧪 Testes e validação
 
-O projeto possui testes automatizados organizados em diferentes áreas:
+O projeto possui arquivos de testes automatizados na pasta `tests/`, contemplando diferentes áreas da aplicação, como:
 
-- Testes do motor de conversação.
-- Testes de cenários e continuidade.
-- Testes do endpoint de IA.
-- Testes do provedor Gemini.
-- Testes de segurança.
-- Testes do cliente de IA e fallback.
-- Testes de navegação com Playwright.
+- Motor de conversação.
+- Cenários e continuidade de conversa.
+- Endpoint de inteligência artificial.
+- Cliente de IA e mecanismos de fallback.
 
-Para executar a suíte principal:
+Para executar os testes com o executor nativo do Node.js:
 
 ```bash
-npm test
+node --test tests/*.test.mjs
 ```
 
-Para gerar o build:
+Para verificar se a aplicação gera a versão de produção corretamente:
 
 ```bash
 npm run build
 ```
 
-**Importante:** os testes automatizados do Gemini utilizam um servidor simulado. Eles não substituem a validação com chamadas reais à API do Google. A integração publicada também deve ser testada no ambiente da Vercel.
+**Observação:** a integração com o Gemini também deve ser validada no ambiente da Vercel, com a variável de ambiente configurada. Testes com servidores simulados não substituem chamadas reais à API do Google.
 
 ---
 
-## Deploy
+## 🌐 Deploy
 
-O projeto está hospedado na Vercel.
+O projeto está publicado na Vercel.
 
-**Acessar aplicação:**
-[https://teste-gs-mu.vercel.app/](https://teste-gs-mu.vercel.app/)
+<p align="center">
+  <a href="https://global-front-web-psi.vercel.app/">
+    <strong>🚀 ACESSAR A APLICAÇÃO — BIMO</strong>
+  </a>
+</p>
 
-A integração com Gemini depende da variável `GEMINI_API_KEY` configurada no ambiente da Vercel.
+
+
+A integração com o Gemini depende da variável `GEMINI_API_KEY` configurada no ambiente da Vercel.
 
 Após alterações no código ou nas variáveis de ambiente, é necessário realizar um novo deploy para aplicar as mudanças.
 
 ---
 
-## Documentação de Inteligência Artificial
+## 🤖 Documentação de Inteligência Artificial
 
-O arquivo `AI.md` registra o uso de ferramentas de inteligência artificial durante o desenvolvimento.
+O arquivo `AI.md` é destinado ao registro transparente da utilização de ferramentas de inteligência artificial durante o desenvolvimento.
 
 A documentação deve apresentar:
 
-- Ferramentas utilizadas.
+- Ferramentas de IA utilizadas.
 - Finalidade de cada ferramenta.
-- Prompts utilizados.
+- Prompts utilizados durante o desenvolvimento.
 - Funcionalidades desenvolvidas ou modificadas com auxílio de IA.
 - Validações e testes realizados.
 - Ajustes feitos após identificar problemas.
 - Análise crítica da equipe sobre os resultados.
 
-O uso de IA deve ser documentado de forma transparente, distinguindo as contribuições automatizadas das decisões e implementações realizadas pelos integrantes.
+O objetivo é diferenciar as contribuições automatizadas das decisões, implementações e validações realizadas pelos integrantes.
 
 ---
 
-## Versionamento e colaboração
+## 🔄 Versionamento e colaboração
 
 O projeto utiliza Git e GitHub para controle de versão e acompanhamento da evolução do desenvolvimento.
 
-Os commits devem representar alterações reais e significativas, organizadas por funcionalidade, correção ou melhoria.
+O histórico de commits registra a evolução do projeto, incluindo funcionalidades, correções e melhorias realizadas durante o processo de desenvolvimento.
 
 **Requisito acadêmico:** manter pelo menos 15 commits significativos, conforme solicitado no trabalho.
 
+[Consultar histórico de commits no GitHub](https://github.com/luczss/Global-FrontWeb/commits/main/)
+
 ---
 
-\<p align="center">
-&#x20; \<strong>Bimo — Expressar. Refletir. Conectar.\</strong>
-&#x20; \<br />
-&#x20; Desenvolvido como projeto acadêmico de Engenharia de Software.
-\</p>
+<p align="center">
+  <strong>Bimo — Expressar. Refletir. Conectar.</strong>
+  <br />
+  Desenvolvido como projeto acadêmico de Engenharia de Software.
+  <br /><br />
+  <em>Tecnologia que aproxima. Um espaço para se expressar.</em>
+</p>
