@@ -1,0 +1,17 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+@layer base {
+  :focus-visible { outline: 3px solid #2E5247; outline-offset: 2px; border-radius: 8px; }
+  @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation: none !important; transition: none !important; } } body { @apply bg-bruma text-carvao font-sans antialiased; } }
+@layer components {
+  .card { @apply bg-white/70 rounded-3xl shadow-soft border border-areia p-5; }
+  .btn { @apply rounded-full px-5 py-2.5 font-bold transition active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-floresta text-bruma hover:bg-carvao; }
+  .btn-soft { @apply btn bg-salvia/30 text-floresta hover:bg-salvia/50; }
+  .btn-danger { @apply btn bg-argila/40 text-carvao hover:bg-argila/70; }
+  .input { @apply w-full rounded-2xl border border-areia bg-white px-4 py-2.5 outline-none focus:ring-2 focus:ring-salvia; }
+  .title { @apply text-floresta font-extrabold; }
+}
+@keyframes pop { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.pop { animation: pop .3s ease both }
+@keyframes bob { 50% { transform: translateY(-6px) } }
+.bob { animation: bob 3.5s ease-in-out infinite }
