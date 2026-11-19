@@ -1,4 +1,4 @@
-<p align="center">   <img src="docs/bimo-banner.png" alt="Bimo — suporte emocional, sempre por perto" width="100%" /> </p>
+<p align="center">   <img src="/src/assets/characters/bimoimg.png" alt="Bimo — suporte emocional, sempre por perto" width="100%" /> </p>
 
 <h1 align="center">Bimo — Expressar, Refletir e Conectar</h1>
 
